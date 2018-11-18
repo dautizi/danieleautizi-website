@@ -100,11 +100,20 @@ dependencies {
     integrationTestCompile("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
 }
 
+processResources {
+    filesMatching('*.yml') {
+        expand(project.properties)
+    }
+    outputs.upToDateWhen { false }
+}
+
 bootRun {
+  // Pass on all properties like -DSPRING_PROFILES_ACTIVE=prod
   environment SPRING_PROFILES_ACTIVE: environment.SPRING_PROFILES_ACTIVE ?: "local"
 }
 
 test {
+  // Pass on all properties like -DSPRING_PROFILES_ACTIVE=production
   environment SPRING_PROFILES_ACTIVE: environment.SPRING_PROFILES_ACTIVE ?: "test"
 }
 

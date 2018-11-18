@@ -15,43 +15,42 @@
                 <a href="#" data-filter="*">all</a>
             </li>
 
-            #if ($adventureTypes && $adventureTypes.size() gt 0)
-                #foreach ($type in $adventureTypes)
-                    <li>
-                        <a href="#" data-filter=".$!{type.adventureType}">$!{type.adventureType}</a>
-                    </li>
-                #end
-            #end
+            <li th:if="${adventureTypes != null}"
+                th:each="type: ${adventureTypes}">
+                <a href="#" th:attr="data-filter=${type}"
+                   th:text="${type}">Adventure type
+                </a>
+            </li>
         </ul>
         <!--FILTERS-->
 
         <!-- ADVENTURES -->
         <div class="portfolio-items media-grid masonry" data-layout="masonry" data-item-width="340">
-            #if ($adventures && $adventures.size() gt 0)
-                #foreach ($adventure in $adventures)
-                    <!-- adventure-item -->
-                    <div class="$!{adventure.cssClass}">
-                        <div class="media-box">
-                            <img src="$!{adventure.image}" alt="$!{adventure.altImage}">
-                            <div class="mask"></div>
+            <!-- adventure-item -->
+            <div th:if="${adventureTypes != null}"
+                 th:each="adventure: ${adventures}"
+                 th:classappend="${adventure.cssClass}">
+                <div class="media-box">
+                    <img th:src="${adventure.image}" th:alt="${adventure.altImage}"></img>
+                    <div class="mask"></div>
 
-                            #set ($media = $adventure.media)
-                            #if ($media && $media.size() gt 0) 
-                                #foreach ($m in $media)
-                                    <a href="$!{m.mediaUrl}" class="$!{adventure.mediaCssClass}" title="$!{m.title}" ></a>
-                                #end
-                            #else
-                                <a href="$!{adventure.articleUrl}" class="$!{adventure.mediaCssClass}"></a>
-                            #end
-                        </div>
+                    <!--
+                    #set ($media = $adventure.media)
+                    #if ($media && $media.size() gt 0)
+                        #foreach ($m in $media)
+                            <a href="$!{m.mediaUrl}" class="$!{adventure.mediaCssClass}" title="$!{m.title}" ></a>
+                        #end
+                    #else
+                        <a href="$!{adventure.articleUrl}" class="$!{adventure.mediaCssClass}"></a>
+                    #end
+                    -->
+                </div>
 
-                        <div class="media-cell-desc">
-                            <h3>$!{adventure.title}</h3>
-                            <p class="category">$!{adventure.category}</p>
-                        </div>
-                    </div>
-                #end
-            #end
+                <div class="media-cell-desc">
+                    <h3 th:text="${adventure.title}">title</h3>
+                    <p class="category" th:text="${adventure.category}">category</p>
+                </div>
+            </div>
         </div>
         <!-- PORTFOLIO -->
     </div>

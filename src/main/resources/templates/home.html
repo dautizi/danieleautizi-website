@@ -15,7 +15,7 @@
             <!-- header-wrap -->
             <div class="header-wrap">
 
-                <img src="$!{config.staticBaseUrl}/images/site/avatar-cartoonized.png" alt="avatar"></img>
+                <img th:src="${staticConfig.staticBaseUrl + '/images/site/avatar-cartoonized.png'}" alt="avatar"></img>
 
                 <h1 class="site-title">DANIELE AUTIZI</h1>
 
@@ -67,7 +67,7 @@
             <!-- PAGE : HOME -->
 
             <!-- PAGE : ABOUT -->
-            <!-- <div th:substituteby="/pages/about-me" ></div> -->
+            <div th:substituteby="/pages/about-me" ></div>
             <!-- PAGE : ABOUT -->
 
             <!-- PAGE : RESUME -->
@@ -75,7 +75,7 @@
             <!-- PAGE : RESUME -->
 
             <!-- PAGE : ADVENTURES -->
-            <!-- <div th:substituteby="/pages/adventures" ></div> -->
+            <div th:substituteby="/pages/adventures" ></div>
             <!-- PAGE : ADVENTURES -->
 
             <!-- PAGE : BLOG -->

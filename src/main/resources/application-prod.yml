@@ -1,0 +1,131 @@
+server:
+    port: 8080
+
+#spring:
+#    data:
+#        mongodb:
+#            host: localhost
+#            port: 27017
+#            database: danieleautizi
+
+banner:
+    location: service-banner.txt
+
+# Logging
+logging:
+    level:
+        ROOT: ERROR
+        com.danieleautizi.website: DEBUG
+        com.danieleautizi.website.service: DEBUG
+        org.springframework.boot.autoconfigure.security: INFO
+
+# Services
+personalDataService:
+    ribbon:
+        listOfServers: localhost:8090
+        ReadTimeout: 4000
+        MaxAutoRetriesNextServer: 2
+        OkToRetryOnAllOperations: true
+        MaxAutoRetries: 2
+        eureka.enabled: false
+
+# Pool
+remote:
+    pool:
+        max-connections-per-route: 4
+        max-connections: 16
+        connection-request-timeout: 5000
+        connection-timeout: 5000
+        socket-read-timeout: 15000
+
+# Static
+static:
+    baseUrl: http://local.danieleautizi.com:9090/danieleautizi
+    adminBaseUrl: http://local.danieleautizi.com:9090/danieleautizi/admin/
+    staticBaseUrl: http://danieleautizi.local
+    # icon:
+    # twitterName:
+    # gigyaComments:
+    # gigyaApiKey:
+    # updateTime:
+
+# Geo Location
+geolocation:
+    baseUrl: http://freegeoip.net/csv/
+    # http://ip-api.com/docs/api:json
+
+# Google
+goggle:
+    # ReCaptcha
+    recaptcha:
+        siteKey: xxx
+        secretKey: yyy
+
+    # Map
+    map:
+        latitude: 59.339025
+        longitude: 18.067876
+        zoom: 6
+        apiKey: xxx
+
+# Email
+mailing:
+    sender:
+        usr: xxx
+        pwd: yyy
+    receiver: zzz
+
+    smtp:
+        ssl:
+            host: smtp.gmail.com
+            socketFactory:
+                port: 465
+                class: javax.net.ssl.SSLSocketFactory
+            auth: true
+            port: 465
+        tsl:
+            host: smtp.gmail.com
+            starttlsy:
+                enable: true
+            auth: true
+            port: 587
+
+social:
+    spotify:
+        scheme: 1
+        host: api.spotify.com
+        port: 443
+        accessToken: xxx
+        refreshToken: yyy
+        clientId: zzz
+        clientSecret: ttt
+        redirectURI: http://local.danieleautizi.com:9090/danieleautizi/spotify
+
+    instagram:
+        host: api.instagram.com
+        version: v1
+        clientId: xxx
+        clientSecret: yyy
+        redirectURI: http://local.danieleautizi.com:9090/danieleautizi/instagram
+
+    linkedin:
+        host: api.linkedin.com
+        version: v1
+        clientId: xxx
+        clientSecret: yyy
+        redirectURI: http://local.danieleautizi.com:9090/danieleautizi/linkedin
+
+    google-plus:
+        siteHost: local.danieleautizi.com
+        port: 9016
+        authUri: https://accounts.google.com/o/oauth2/auth
+        tokenUri: https://accounts.google.com/o/oauth2/token
+        authProviderX509CertUrl: https://www.googleapis.com/oauth2/v1/certs
+        version: v1
+        projectId: xxx
+        clientId: yyy
+        jsonFile: zzz
+        clientSecret: ttt
+        redirectURI: http://local.danieleautizi.com:9090/danieleautizi/google-plus
+        redirectUrisInput: http://www.danieleautizi.com/google-plus,http://local.danieleautizi.com:9090/danieleautizi/google-plus
+        dataFolder: /Users/danieleautizi/Downloads/googlePlus/

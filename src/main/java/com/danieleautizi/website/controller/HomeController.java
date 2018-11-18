@@ -1,5 +1,10 @@
 package com.danieleautizi.website.controller;
 
+import com.danieleautizi.website.configuration.GoogleProperties;
+import com.danieleautizi.website.configuration.StaticProperties;
+import com.danieleautizi.website.controller.dictionary.RequestDictionary;
+import com.danieleautizi.website.manager.AdventureManager;
+import com.danieleautizi.website.manager.BlogManager;
 import com.danieleautizi.website.manager.SkillManager;
 
 import lombok.NonNull;
@@ -20,6 +25,15 @@ import javax.servlet.http.HttpServletRequest;
 public class HomeController {
 
     @NonNull
+    private StaticProperties staticProperties;
+    @NonNull
+    private GoogleProperties googleProperties;
+
+    @NonNull
+    private AdventureManager adventureManager;
+    @NonNull
+    private BlogManager blogManager;
+    @NonNull
     private SkillManager skillManager;
 
     @RequestMapping(value = "/")
@@ -33,7 +47,20 @@ public class HomeController {
         val skills = skillManager.getSkills();
         LOG.info("  # SKILLS # ", skills);
 
-        request.setAttribute("name", "LogSearcher");
+        // get the Adventures
+        val adventures = adventureManager.getAdventures();
+        request.setAttribute(RequestDictionary.ADVENTURES, adventures);
+
+        // set the Adventure Types
+        val adventureTypes = adventureManager.getAdventureTypes();
+        request.setAttribute(RequestDictionary.ADVENTURE_TYPES, adventureTypes);
+
+        // set the Blogs
+        val blogs = blogManager.getBlogs();
+        request.setAttribute(RequestDictionary.BLOGS, blogs);
+
+        request.setAttribute("staticConfig", staticProperties);
+        request.setAttribute("googleConfig", googleProperties);
         return "/home";
     }
 }
