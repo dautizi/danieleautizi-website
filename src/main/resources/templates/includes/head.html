@@ -37,11 +37,11 @@ Born in Monte San Giovanni in Sabina - Rieti - Italy. Work and live in Stockholm
 <meta property="og:url" content="http://www.danieleautizi.com" ></meta>
 <meta property="og:type" content="website" ></meta>
 <meta property="og:title" content="Daniele Autizi's Personal Website" ></meta>
-<meta property="og:image" content="$!{staticConfig.staticBaseUrl}/images/people/daniele-autizi.jpg" ></meta>
-<meta property="og:description" content="Welcome to my personal website...and thank you for having a look in! This website primarily 
+<meta property="og:image" th:content="${staticConfig.staticBaseUrl}+ '/images/people/daniele-autizi.jpg'" ></meta>
+<meta property="og:description" content="Welcome to my personal website...and thank you for having a look in! This website primarily
 serves to introduce myself and provide a convenient way for employers, colleagues, and friends to contact me and find me online. Here you can find more personal 
 information about my curriculum vitae" ></meta>
-<meta property="og:updated_time" content="$!{updateTime}" ></meta>
+<meta property="og:updated_time" th:content="${updateTime}" ></meta>
 
 <!-- Google+ -->
 <meta itemprop="name" content="Daniele Autizi" ></meta>

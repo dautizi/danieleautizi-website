@@ -51,7 +51,8 @@
 
         <!-- .site-main -->
         <div id="main" class="site-main"> <!-- PAGE : HOME -->
-            <section id="home" class="pt-page page-layout light-text home-section has-bg-img" style="background-image:url($!{config.staticBaseUrl}/images/site/homepage.jpg)">
+            <section id="home" class="pt-page page-layout light-text home-section has-bg-img"
+                     th:style="'background-image:url(' + ${staticConfig.staticBaseUrl} + '/images/site/homepage.jpg)'">
                 <!-- .content -->
                 <div class="content">
                     <!-- .layout-medium -->
@@ -71,7 +72,7 @@
             <!-- PAGE : ABOUT -->
 
             <!-- PAGE : RESUME -->
-            <!-- <div th:substituteby="/pages/resume" ></div> -->
+            <div th:substituteby="/pages/resume" ></div>
             <!-- PAGE : RESUME -->
 
             <!-- PAGE : ADVENTURES -->

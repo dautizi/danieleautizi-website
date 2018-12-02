@@ -52,7 +52,7 @@
         <!-- service -->
         <div class="service">
             <!--<i class="pe-7s-scissors"></i>-->
-            <img src="$!{config.staticBaseUrl}/images/site/icon-04.png" alt="image"/>
+            <img th:src="${staticConfig.staticBaseUrl} + '/images/site/icon-04.png'" alt="image"/>
             <img th:src="${staticConfig.staticBaseUrl + '/images/site/icon-04.png'}" alt="image"></img>
             <h4>Problem Solver</h4>
             <p>I like taking the lead on an issue and solving it. In my opinion a successful fix is the result of a good background.</p>

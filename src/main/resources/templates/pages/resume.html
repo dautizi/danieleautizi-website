@@ -11,13 +11,13 @@
 
         <!-- row -->
         <div class="row">
-            #parse("pages/resume/work-history.html")
+            <div th:substituteby="/pages/resume/work-history" ></div>
 
             <!-- col -->
             <div class="col-sm-5">
-                #parse("pages/resume/code-skills.html")
+                <div th:substituteby="/pages/resume/code-skills" ></div>
 
-                #parse("pages/resume/testimonials.html")
+                <div th:substituteby="/pages/resume/testimonials" ></div>
             </div>
             <!-- col -->
         </div>

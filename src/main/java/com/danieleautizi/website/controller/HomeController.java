@@ -6,6 +6,7 @@ import com.danieleautizi.website.controller.dictionary.RequestDictionary;
 import com.danieleautizi.website.manager.AdventureManager;
 import com.danieleautizi.website.manager.BlogManager;
 import com.danieleautizi.website.manager.SkillManager;
+import com.danieleautizi.website.manager.WorkExperienceManager;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,8 @@ public class HomeController {
     private BlogManager blogManager;
     @NonNull
     private SkillManager skillManager;
+    @NonNull
+    private WorkExperienceManager workExperienceManager;
 
     @RequestMapping(value = "/")
     public String index() {
@@ -43,9 +46,6 @@ public class HomeController {
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String welcome(HttpServletRequest request) {
-
-        val skills = skillManager.getSkills();
-        LOG.info("  # SKILLS # ", skills);
 
         // get the Adventures
         val adventures = adventureManager.getAdventures();
@@ -58,6 +58,14 @@ public class HomeController {
         // set the Blogs
         val blogs = blogManager.getBlogs();
         request.setAttribute(RequestDictionary.BLOGS, blogs);
+
+        // set Skills
+        val skillMap = skillManager.getSkills();
+        request.setAttribute(RequestDictionary.SKILL_MAP, skillMap);
+
+        // set WorkExperiences
+        val workExperiences = workExperienceManager.getWorkExperiences();
+        request.setAttribute(RequestDictionary.WORK_EXPERIENCES, workExperiences);
 
         request.setAttribute("staticConfig", staticProperties);
         request.setAttribute("googleConfig", googleProperties);

@@ -9,7 +9,7 @@
         </h1>
         <!-- page-title -->
 
-        <!--FILTERS-->
+        <!-- FILTERS - begin -->
         <ul id="filters" class="filters">
             <li class="current">
                 <a href="#" data-filter="*">all</a>
@@ -22,9 +22,9 @@
                 </a>
             </li>
         </ul>
-        <!--FILTERS-->
+        <!-- FILTERS - end -->
 
-        <!-- ADVENTURES -->
+        <!-- ADVENTURES - begin -->
         <div class="portfolio-items media-grid masonry" data-layout="masonry" data-item-width="340">
             <!-- adventure-item -->
             <div th:if="${adventureTypes != null}"
@@ -34,16 +34,16 @@
                     <img th:src="${adventure.image}" th:alt="${adventure.altImage}"></img>
                     <div class="mask"></div>
 
-                    <!--
-                    #set ($media = $adventure.media)
-                    #if ($media && $media.size() gt 0)
-                        #foreach ($m in $media)
-                            <a href="$!{m.mediaUrl}" class="$!{adventure.mediaCssClass}" title="$!{m.title}" ></a>
-                        #end
-                    #else
-                        <a href="$!{adventure.articleUrl}" class="$!{adventure.mediaCssClass}"></a>
-                    #end
-                    -->
+                    <a th:if="${adventure.adventureMedia != null}"
+                       th:each="media: ${adventure.adventureMedia}"
+                       th:href="${media.mediaUrl}"
+                       th:classappend="${adventure.mediaCssClass}"
+                       th:title="${media.title}" ></a>
+                    <a th:if="${adventure.adventureMedia == null}"
+                       th:each="media: ${adventure.adventureMedia}"
+                       th:href="${media.mediaUrl}"
+                       th:classappend="$!{adventure.mediaCssClass}"
+                       th:title="${media.title}" ></a>
                 </div>
 
                 <div class="media-cell-desc">
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <!-- PORTFOLIO -->
+        <!-- ADVENTURES - end -->
     </div>
     <!-- .layout-medium -->
 </div>

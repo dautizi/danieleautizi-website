@@ -48,6 +48,12 @@ public class RequestDictionary {
     public static final String WS_PING = "blogping.method.ping";
     public static final String WS_PING_PARAMETERS = "blogping.method.ping.params";
 
+    /* SKILL */
+    public static final String SKILL_MAP = "skillMap";
+
+    /* WORK EXPERIENCE */
+    public static final String WORK_EXPERIENCES = "workExperiences";
+
     /* REQUEST PARAMETERS */
     public static final String PARAM_PAGE = "p";
 
