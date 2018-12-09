@@ -3,6 +3,7 @@ package com.danieleautizi.website.service;
 import com.danieleautizi.website.model.presentation.Adventure;
 import com.danieleautizi.website.model.presentation.Article;
 import com.danieleautizi.website.model.presentation.Blog;
+import com.danieleautizi.website.model.presentation.CurriculumVitae;
 import com.danieleautizi.website.model.presentation.Education;
 import com.danieleautizi.website.model.presentation.Skill;
 import com.danieleautizi.website.model.presentation.WorkExperience;
@@ -88,6 +89,12 @@ public class PersonalDataServiceClient {
 
         return restTemplate.getForObject("http://personalDataService/blogs/active",
                                          Blogs.class);
+    }
+
+    public CurriculumVitae getCurriculumVitae() {
+
+        return restTemplate.getForObject("http://personalDataService/curricula-vitae/last",
+                                         CurriculumVitae.class);
     }
 
     public List<Education> getActiveEducations() {

@@ -5,6 +5,8 @@ import com.danieleautizi.website.configuration.StaticProperties;
 import com.danieleautizi.website.controller.dictionary.RequestDictionary;
 import com.danieleautizi.website.manager.AdventureManager;
 import com.danieleautizi.website.manager.BlogManager;
+import com.danieleautizi.website.manager.CurriculumVitaeManager;
+import com.danieleautizi.website.manager.EducationManager;
 import com.danieleautizi.website.manager.SkillManager;
 import com.danieleautizi.website.manager.WorkExperienceManager;
 
@@ -35,6 +37,10 @@ public class HomeController {
     @NonNull
     private BlogManager blogManager;
     @NonNull
+    private CurriculumVitaeManager curriculumVitaeManager;
+    @NonNull
+    private EducationManager educationManager;
+    @NonNull
     private SkillManager skillManager;
     @NonNull
     private WorkExperienceManager workExperienceManager;
@@ -47,23 +53,31 @@ public class HomeController {
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String welcome(HttpServletRequest request) {
 
-        // get the Adventures
+        // fetch adventures
         val adventures = adventureManager.getAdventures();
         request.setAttribute(RequestDictionary.ADVENTURES, adventures);
 
-        // set the Adventure Types
+        // filter adventure types
         val adventureTypes = adventureManager.getAdventureTypes();
         request.setAttribute(RequestDictionary.ADVENTURE_TYPES, adventureTypes);
 
-        // set the Blogs
+        // fetch blogs
         val blogs = blogManager.getBlogs();
         request.setAttribute(RequestDictionary.BLOGS, blogs);
 
-        // set Skills
+        // fetch last curriculum vitae
+        val curriculumVitae = curriculumVitaeManager.getCurriculumVitae();
+        request.setAttribute(RequestDictionary.CURRICULUM_VITAE, curriculumVitae);
+
+        // fetch educations
+        val educations = educationManager.getEducations();
+        request.setAttribute(RequestDictionary.EDUCATIONS, educations);
+
+        // fetch skills
         val skillMap = skillManager.getSkills();
         request.setAttribute(RequestDictionary.SKILL_MAP, skillMap);
 
-        // set WorkExperiences
+        // fetch work experiences
         val workExperiences = workExperienceManager.getWorkExperiences();
         request.setAttribute(RequestDictionary.WORK_EXPERIENCES, workExperiences);
 
@@ -71,4 +85,5 @@ public class HomeController {
         request.setAttribute("googleConfig", googleProperties);
         return "/home";
     }
+
 }

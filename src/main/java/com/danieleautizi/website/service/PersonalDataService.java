@@ -4,6 +4,7 @@ import com.danieleautizi.website.exception.InternalServerErrorException;
 import com.danieleautizi.website.model.presentation.Adventure;
 import com.danieleautizi.website.model.presentation.Article;
 import com.danieleautizi.website.model.presentation.Blog;
+import com.danieleautizi.website.model.presentation.CurriculumVitae;
 import com.danieleautizi.website.model.presentation.Education;
 import com.danieleautizi.website.model.presentation.Skill;
 import com.danieleautizi.website.model.presentation.WorkExperience;
@@ -93,6 +94,15 @@ public class PersonalDataService {
         return personalServiceClient.getActiveBlogs();
     }
     /* Blog [end] */
+
+
+    /* CurriculumVitae [begin] */
+    @HystrixCommand(commandKey = HYSTRIX_KEY, threadPoolKey = HYSTRIX_KEY)
+    public CurriculumVitae getCurriculumVitae() {
+
+        return personalServiceClient.getCurriculumVitae();
+    }
+    /* CurriculumVitae [end] */
 
 
     /* Education [begin] */

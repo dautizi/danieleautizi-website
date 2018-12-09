@@ -1,6 +1,5 @@
 package com.danieleautizi.website.model.presentation;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
@@ -8,30 +7,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.ZonedDateTime;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Education {
+public class CurriculumVitae {
 
     private String id;
 
-    private String school;
     private String title;
+    private String path;
+    private String filename;
     private String description;
-    private String schoolImage;
-    private String schoolThumb;
-    private String period;
-    private String startYear;
-    private String endYear;
+
+    private String link;
 
     private boolean active;
     private int prg;
-
-    private ZonedDateTime datetime;
-    private ZonedDateTime lastUpdate;
 }
