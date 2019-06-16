@@ -11,37 +11,37 @@
             </h1>
             <!-- page-title -->
 
-            <!-- LATEST POSTS -->
+            <!-- LATEST POSTS - begin -->
             <div class="latest-posts media-grid masonry" data-layout="masonry" data-item-width="340">
-                #if ($blogs && $blogs.size() gt 0)
-                    #foreach ($blog in $blogs)
-                        <!-- post -->
-                        <div class="$!{blog.cssClass}">
-                            <div class="media-box">
-                                <img src="$!{blog.image}" alt="$!{blog.altImage}">
-                                <div class="mask"></div>
-                                <a href="$!{blog.articleUrl}" class="$!{blog.mediaCssClass}"></a>
-                            </div>
 
-                            <header class="media-cell-desc">
-                                #if ($blog)
-                                    #set ($blogDay = $!{dateTool.format("dd", $dateMathTool.getDate($blog.creationTime))})
-                                    #set ($blogMonth = $!{dateTool.format("MMMM", $dateMathTool.getDate($blog.creationTime))})
-                                    #set ($blogYear = $!{dateTool.format("yyyy", $dateMathTool.getDate($blog.creationTime))})
-                                #end
+                <!-- blog-item -->
+                <div th:if="${not #lists.isEmpty(blogs)}"
+                     th:each="blog: ${blogs}"
+                     th:classappend="${blog.cssClass}">
+                    <div class="media-box">
+                        <img th:src="${blog.image}" th:alt="${blog.altImage}"></img>
+                        <div class="mask"></div>
+                        <a href="${blog.articleUrl}" class="${blog.mediaCssClass}"></a>
 
-                                <span title="$!{blogYear}" class="date">
-                                <span class="day">$!{blogDay}</span>$!{blogMonth}</span>
-                                <h3>
-                                    <a href="$!{blog.articleUrl}">$!{blog.title}</a>
-                                </h3>
-                            </header>
-                        </div>
-                        <!-- post -->
-                    #end
-                #end
+                        <header th:if="${blog != null}"
+                                class="media-cell-desc">
+                            <span th:title="${#dates.format(blog.datetime.toString(), 'yyyy')}" class="date">
+                                <span class="day" th:text="${#dates.format(blog.datetime.toString(), 'dd')}">day</span>
+                                <span th:text="${#dates.format(blog.datetime.toString(), 'MMMM')}">month</span>
+                            </span>
+                            <h3>
+                                <a href="$!{blog.articleUrl}">$!{blog.title}</a>
+                            </h3>
+                        </header>
+                    </div>
+
+                    <div class="media-cell-desc">
+                        <h3 th:text="${adventure.title}">title</h3>
+                        <p class="category" th:text="${adventure.category}">category</p>
+                    </div>
+                </div>
             </div>
-            <!-- LATEST POSTS -->
+            <!-- LATEST POSTS - end -->
 
             <p class="launch">
                 <a class="button" href="blog.html">SEE ALL POSTS</a>

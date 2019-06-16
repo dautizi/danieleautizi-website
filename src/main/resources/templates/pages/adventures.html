@@ -17,7 +17,7 @@
 
             <li th:if="${adventureTypes != null}"
                 th:each="type: ${adventureTypes}">
-                <a href="#" th:attr="data-filter=${type}"
+                <a href="#" th:attr="data-filter='.' + ${type}"
                    th:text="${type}">Adventure type
                 </a>
             </li>
@@ -27,23 +27,22 @@
         <!-- ADVENTURES - begin -->
         <div class="portfolio-items media-grid masonry" data-layout="masonry" data-item-width="340">
             <!-- adventure-item -->
-            <div th:if="${adventureTypes != null}"
+            <div th:if="${adventures != null}"
                  th:each="adventure: ${adventures}"
                  th:classappend="${adventure.cssClass}">
                 <div class="media-box">
                     <img th:src="${adventure.image}" th:alt="${adventure.altImage}"></img>
                     <div class="mask"></div>
 
-                    <a th:if="${adventure.adventureMedia != null}"
+                    <a th:if="${not #lists.isEmpty(adventure.adventureMedia)}"
                        th:each="media: ${adventure.adventureMedia}"
                        th:href="${media.mediaUrl}"
                        th:classappend="${adventure.mediaCssClass}"
                        th:title="${media.title}" ></a>
-                    <a th:if="${adventure.adventureMedia == null}"
-                       th:each="media: ${adventure.adventureMedia}"
-                       th:href="${media.mediaUrl}"
-                       th:classappend="$!{adventure.mediaCssClass}"
-                       th:title="${media.title}" ></a>
+                    <a th:if="${#lists.isEmpty(adventure.adventureMedia)}"
+                       th:href="${adventure.articleUrl}"
+                       th:classappend="${adventure.mediaCssClass}"
+                       th:title="${adventure.title}" ></a>
                 </div>
 
                 <div class="media-cell-desc">

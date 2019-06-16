@@ -41,7 +41,9 @@ public class Blog {
     private int prg;
 
     private ZonedDateTime datetime;
+    private String datetimeString;
     private ZonedDateTime lastUpdate;
+    private String lastUpdateString;
 
     private Blog prev;
     private Blog next;

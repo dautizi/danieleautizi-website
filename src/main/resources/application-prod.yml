@@ -40,8 +40,8 @@ remote:
 
 # Static
 static:
-    baseUrl: http://local.danieleautizi.com:9090/danieleautizi
-    adminBaseUrl: http://local.danieleautizi.com:9090/danieleautizi/admin/
+    baseUrl: http://local.danieleautizi.com:8080/danieleautizi
+    adminBaseUrl: http://local.danieleautizi.com:8080/danieleautizi/admin/
     staticBaseUrl: http://danieleautizi.local
     # icon:
     # twitterName:
