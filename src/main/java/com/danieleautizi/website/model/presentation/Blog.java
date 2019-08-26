@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @Data
@@ -41,8 +42,11 @@ public class Blog {
     private int prg;
 
     private ZonedDateTime datetime;
+    private Date formattedDatetime;
     private String datetimeString;
+
     private ZonedDateTime lastUpdate;
+    private Date formattedLastUpdate;
     private String lastUpdateString;
 
     private Blog prev;
